@@ -1,0 +1,7 @@
+{
+	"name": "initial_load",
+	"properties": {
+		"description": "copy data set from github to sql db",
+		"annotations": []
+	}
+}
