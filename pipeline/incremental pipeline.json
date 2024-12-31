@@ -133,6 +133,38 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "update watermark table",
+				"description": "this will update the value of date_id with the max value.\nThat will the load the value from the max date id then",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "copyDatalake",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[updatewatermarktable]",
+					"storedProcedureParameters": {
+						"value": "@activity('current_load').output.value[0].max_date",
+						"type": "Expression"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_sql_db",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
