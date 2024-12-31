@@ -1,0 +1,9 @@
+{
+	"name": "ronend2enddatafactory",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "95626e81-1848-4bbf-af4c-d7bc948f9f58",
+		"tenantId": "2dcff4d3-20f3-4943-af13-c92f548fece2"
+	}
+}
