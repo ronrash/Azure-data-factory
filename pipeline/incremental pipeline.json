@@ -1,7 +1,7 @@
 {
 	"name": "incremental pipeline",
 	"properties": {
-		"description": "This pipeline is used for incremantal loading\n",
+		"description": "This pipeline is used for incremental loading of data from sql db to data lake\n",
 		"activities": [
 			{
 				"name": "copyDatalake",
@@ -33,7 +33,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from carsales where date_id > '@{activity('last_load').output.value[0].last_load}' and date_id <= '@{activity('current_load').output[0].max_date}'",
+							"value": "SELECT * \nFROM carsales \nWHERE date_id > '@{activity('last_load').output.value[0].last_load} '\n  AND date_id <= '@{activity('current_load').output.value[0].max_date};'\n",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
