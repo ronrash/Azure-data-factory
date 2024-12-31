@@ -1,0 +1,13 @@
+{
+	"name": "ls_git",
+	"properties": {
+		"description": "this is an http linked service format is a csv",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
