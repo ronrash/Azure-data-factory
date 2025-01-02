@@ -157,16 +157,50 @@
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[updatewatermarktable]",
 					"storedProcedureParameters": {
-						"value": "@activity('current_load').output.value[0].max_date",
-						"type": "Expression"
+						"last_load": {
+							"value": {
+								"value": "@activity('current_load').output.value[0].max_date",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
 					}
 				},
 				"linkedServiceName": {
 					"referenceName": "ls_sql_db",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "checking variable",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "copyDatalake",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "last_load",
+					"value": {
+						"value": "@activity('current_load').output.value[0].max_date",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"last_load": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
