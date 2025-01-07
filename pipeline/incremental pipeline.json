@@ -194,6 +194,33 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "silver_notebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "update watermark table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/rohitprashar712_gmail.com#ext#@rohitprashar712gmail.onmicrosoft.com/silver_notebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"variables": {
