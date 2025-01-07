@@ -192,14 +192,17 @@
 						"referenceName": "git_dataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"load_file": "SalesData.csv"
+							"load_file": "IncrementalSales.csv"
 						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"table_name": "carsales"
+						}
 					}
 				]
 			}
